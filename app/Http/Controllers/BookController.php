@@ -39,6 +39,11 @@ class BookController extends Controller
             $query->where('category_id', $request->category_id);
         }
 
+        // Search by description
+        if ($request->filled('description')) {
+            $query->where('description', 'like', '%' . $request->description . '%');
+        }
+
         $books = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
 
         $categories = Category::orderBy('name')->get();
