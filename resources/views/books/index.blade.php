@@ -27,7 +27,7 @@
 {{-- Search & Filter --}}
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
     <form method="GET" action="{{ route('books.index') }}">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div>
                 <label class="block text-xs font-medium text-gray-600 mb-1">タイトル</label>
                 <input type="text" name="title" value="{{ request('title') }}"
@@ -57,6 +57,12 @@
                 </select>
             </div>
             <div>
+                <label class="block text-xs font-medium text-gray-600 mb-1">あらすじ・メモ</label>
+                <input type="text" name="description" value="{{ request('description') }}"
+                    placeholder="あらすじ・メモで検索"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+            </div>
+            <div>
                 <label class="block text-xs font-medium text-gray-600 mb-1">カテゴリ</label>
                 <select name="category_id"
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent bg-white">
@@ -84,7 +90,7 @@
 <div class="flex items-center justify-between mb-4">
     <p class="text-sm text-gray-500">
         {{ $books->total() }} 件の本が見つかりました
-        @if(request()->hasAny(['title', 'author', 'genre', 'status', 'category_id']))
+        @if(request()->hasAny(['title', 'author', 'genre', 'status', 'category_id', 'description']))
             <span class="text-green-800 ml-1">(フィルター適用中)</span>
         @endif
     </p>
