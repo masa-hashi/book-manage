@@ -99,19 +99,19 @@
 
 {{-- Book Grid --}}
 @if($books->count() > 0)
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
         @foreach($books as $book)
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
                 {{-- Cover Image --}}
                 <a href="{{ route('books.show', $book) }}" class="block">
-                    <div class="h-48 bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center overflow-hidden relative">
+                    <div class="h-32 bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center overflow-hidden relative">
                         @if($book->cover_image_url)
                             <img src="{{ $book->cover_image_url }}" alt="{{ $book->title }}"
                                 class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 onerror="this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full text-green-300\'><svg class=\'w-16 h-16\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1\' d=\'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\'/></svg></div>'">
                         @else
                             <div class="flex flex-col items-center justify-center text-green-300">
-                                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                         d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                                 </svg>
@@ -134,7 +134,7 @@
                 </a>
 
                 {{-- Book Info --}}
-                <div class="p-4">
+                <div class="p-3">
                     <a href="{{ route('books.show', $book) }}" class="block">
                         <h3 class="font-semibold text-gray-800 line-clamp-2 hover:text-green-800 transition leading-snug">
                             {{ $book->title }}
